@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+@theme {
+  --color-arcade-bg: #0f172a;
+  --color-arcade-primary: #39ff14;   
+  --color-arcade-secondary: #ff00ff; 
+  --color-arcade-cyan: #00ffff;      
+  --color-arcade-dark: #020617;
+
+  --font-retro: "Press Start 2P", cursive;
+  --font-body: "Inter", sans-serif;
+
+  --shadow-neon-green: 0 0 10px #39ff14, 0 0 20px #39ff14;
+  --shadow-neon-magenta: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+}
+
+body {
+  @apply bg-arcade-bg text-white font-body overflow-x-hidden;
+}
+
+.scanlines::before {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(18, 16, 16, 0) 50%,
+    rgba(0, 0, 0, 0.25) 50%
+  );
+  background-size: 100% 4px;
+  z-index: 50;
+  pointer-events: none;
+}
