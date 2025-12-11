@@ -51,8 +51,8 @@ function App() {
       {gameStarted && (
         <Header 
           isAudioPlaying={isAudioPlaying} 
-          toggleAudio={toggleAudio} 
-          
+          toggleAudio={toggleAudio}
+          onReset={handleResetGame} // <--- REINSERI ISSO AQUI (IMPORTANTE)
         />
       )}
 
@@ -78,11 +78,16 @@ function App() {
             <Footer />
           </section>
 
+          {/* BOTÃO DE RESET CORRIGIDO 
+             - z-[100]: Garante que fique na frente de tudo
+             - text-white/bg-gray-900: Garante contraste alto
+             - bottom-6 right-4: Posição segura para o dedo
+          */}
           <button 
             onClick={handleResetGame}
-            className="fixed bottom-5 right-5 text-[10px] font-retro text-gray-700 hover:text-white bg-black/50 p-2 rounded border border-gray-800 z-50 opacity-50 hover:opacity-100 transition-opacity cursor-pointer"
+            className="fixed bottom-6 right-4 z-[100] px-4 py-2 bg-gray-900/90 border border-gray-500 rounded text-xs font-retro text-gray-200 shadow-xl backdrop-blur-sm active:scale-95 transition-all hover:bg-red-900/80 hover:text-white hover:border-red-500"
           >
-            [ RESET ]
+            [ RESET GAME ]
           </button>
         </div>
       )}
