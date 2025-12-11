@@ -40,7 +40,7 @@ const SwipeCard = ({ project }) => {
   };
 
   return (
-    <div className="bg-gray-800 rounded-xl overflow-hidden shadow-xl border border-gray-700 flex flex-col h-full">
+    <div className="bg-gray-800 rounded-xl overflow-hidden shadow-xl border border-gray-700 flex flex-col w-full h-full">
       <MissionHeader title={project.title} />
       
       <div className="relative h-64 w-full overflow-hidden group">
@@ -86,7 +86,7 @@ const QuizCard = ({ project }) => {
   };
 
   return (
-    <div className="bg-indigo-950 border-2 border-indigo-500/50 rounded-xl overflow-hidden shadow-xl flex flex-col h-full">
+    <div className="bg-indigo-950 border-2 border-indigo-500/50 rounded-xl overflow-hidden shadow-xl flex flex-col w-full h-full">
       <MissionHeader title={project.title} />
 
       <div className="h-64 p-4 flex flex-col relative">
@@ -143,7 +143,7 @@ const TerminalCard = ({ project }) => {
   }, []);
 
   return (
-    <div className="bg-black border border-gray-700 rounded-xl overflow-hidden shadow-xl flex flex-col h-full">
+    <div className="bg-black border border-gray-700 rounded-xl overflow-hidden shadow-xl flex flex-col w-full h-full">
       <div className="bg-gray-900 px-4 py-2 flex items-center gap-2 border-b border-gray-800">
         <div className="flex gap-1.5">
           <div className="w-2.5 h-2.5 rounded-full bg-red-500"></div>
@@ -178,7 +178,7 @@ const Projects = () => {
       type: "swipe",
       desc: "Tinder para filmes",
       longDesc: "Aplicação Fullstack que resolve indecisão em grupo. Usa algoritmo de match e WebSocket para sincronia.",
-      tech: ["Vue.js", "Node", "MySQL"] // Ajustado para Vue conforme seu stack original
+      tech: ["Vue.js", "Node", "MySQL"] // Stack confirmada
     },
     {
       id: 2,
@@ -214,22 +214,26 @@ const Projects = () => {
         </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+     
+      <div className="flex flex-col gap-y-16 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8">
         {projects.map((proj, index) => (
           <motion.div
             key={proj.id}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.2 }}
-            className="h-full"
+           
+            className="flex flex-col h-fit md:h-full relative"
           >
-            {proj.type === 'swipe' && <SwipeCard project={proj} />}
-            {proj.type === 'quiz' && <QuizCard project={proj} />}
-            {proj.type === 'terminal' && <TerminalCard project={proj} />}
+            <div className="w-full flex-grow">
+               {proj.type === 'swipe' && <SwipeCard project={proj} />}
+               {proj.type === 'quiz' && <QuizCard project={proj} />}
+               {proj.type === 'terminal' && <TerminalCard project={proj} />}
+            </div>
             
-            <div className="mt-4 flex flex-wrap gap-2 justify-center">
+            <div className="mt-4 pt-2 pb-2 flex flex-wrap gap-2 justify-center w-full">
               {proj.tech.map(t => (
-                <span key={t} className="text-[10px] uppercase font-retro text-arcade-primary/80 border border-arcade-primary/30 px-2 py-1 rounded bg-arcade-primary/5">
+                <span key={t} className="text-[10px] uppercase font-retro text-arcade-primary/80 border border-arcade-primary/30 px-2 py-1 rounded bg-arcade-primary/5 whitespace-nowrap shadow-sm">
                   {t}
                 </span>
               ))}

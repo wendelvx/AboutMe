@@ -35,6 +35,7 @@ const About = () => {
             <img 
               src={avatarImg}
               alt="Avatar Wendel" 
+              loading="lazy"
               className="w-48 h-48 md:w-80 md:h-80 object-cover bg-gray-900"
             />
             <div className="absolute -bottom-3 -right-3 bg-arcade-primary text-arcade-dark font-retro text-[10px] md:text-xs px-2 py-1">
