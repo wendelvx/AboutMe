@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react'; 
 import { motion } from 'framer-motion';
+import { Loader2 } from 'lucide-react';
 import avatarImg from '../assets/avatar.png';
 
 const StatBar = ({ label, percentage, colorClass }) => (
@@ -20,6 +21,8 @@ const StatBar = ({ label, percentage, colorClass }) => (
 );
 
 const About = () => {
+  const [isImageLoading, setIsImageLoading] = useState(true);
+
   return (
     <section className="min-h-screen flex items-center justify-center p-4 md:p-8 relative z-10">
       
@@ -32,13 +35,22 @@ const About = () => {
           className="flex flex-col items-center"
         >
           <div className="relative p-2 border-4 border-arcade-primary shadow-neon-green bg-arcade-dark/50 mb-6">
+            
+            {isImageLoading && (
+              <div className="absolute inset-0 flex items-center justify-center bg-gray-900 z-10">
+                <div className="w-12 h-12 border-4 border-arcade-primary border-t-transparent rounded-full animate-spin"></div>
+              </div>
+            )}
+
             <img 
               src={avatarImg}
               alt="Avatar Wendel" 
               loading="lazy"
-              className="w-48 h-48 md:w-80 md:h-80 object-cover bg-gray-900"
+              onLoad={() => setIsImageLoading(false)}
+              className={`w-48 h-48 md:w-80 md:h-80 object-cover bg-gray-900 transition-opacity duration-500 ${isImageLoading ? 'opacity-0' : 'opacity-100'}`}
             />
-            <div className="absolute -bottom-3 -right-3 bg-arcade-primary text-arcade-dark font-retro text-[10px] md:text-xs px-2 py-1">
+            
+            <div className="absolute -bottom-3 -right-3 bg-arcade-primary text-arcade-dark font-retro text-[10px] md:text-xs px-2 py-1 z-20">
               LVL. 25
             </div>
           </div>
