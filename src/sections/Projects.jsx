@@ -178,7 +178,7 @@ const Projects = () => {
       type: "swipe",
       desc: "Tinder para filmes",
       longDesc: "Aplicação Fullstack que resolve indecisão em grupo. Usa algoritmo de match e WebSocket para sincronia.",
-      tech: ["Vue.js", "Node", "MySQL"] // Stack confirmada
+      tech: ["React", "Node", "MySQL"] 
     },
     {
       id: 2,
